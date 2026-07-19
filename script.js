@@ -101,37 +101,37 @@ function checkQuiz() {
     // Fantasy OR Dystopian
 
     if (answer1 == "fantasy" && answer2 == "thought" && answer3 == "series") {
-      result.innerHTML = "📖 You should read <strong>The Prison Healer</strong>!";
+      result.innerHTML = "You should read <strong>The Prison Healer</strong>!";
     }
 
     else if (answer1 == "fantasy" && answer2 == "thought" && answer3 == "standalone") {
-      result.innerHTML = "📖 You should read <strong>The Song of Achilles</strong>!";
+      result.innerHTML = "You should read <strong>The Song of Achilles</strong>!";
     }
 
     else if (answer1 == "fantasy" && answer2 == "cozy" && answer3 == "standalone") {
-      result.innerHTML = "📖 You should read <strong>The Very Secret Society of Irregular Witches</strong>!";
+      result.innerHTML = "You should read <strong>The Very Secret Society of Irregular Witches</strong>!";
     }
 
     else if (answer1 == "fantasy" && answer2 == "cozy" && answer3 == "series") {
-      result.innerHTML = "📖 You should read <strong>Percy Jackson</strong>!";
+      result.innerHTML = "You should read <strong>Percy Jackson</strong>!";
     }
 
     // Realistic Fiction
 
     else if (answer1 == "realistic" && answer2 == "cozy" && answer3 == "series") {
-      result.innerHTML = "📖 You should read <strong>Better Than the Movies</strong>!";
+      result.innerHTML = "You should read <strong>Better Than the Movies</strong>!";
     }
 
     else if (answer1 == "realistic" && answer2 == "thought" && answer3 == "series") {
-      result.innerHTML = "📖 You should read <strong>The Inheritance Games</strong>!";
+      result.innerHTML = "You should read <strong>The Inheritance Games</strong>!";
     }
 
     else if (answer1 == "realistic" && answer2 == "thought" && answer3 == "standalone") {
-      result.innerHTML = "📖 You should read <strong>To Kill a Mockingbird</strong>!";
+      result.innerHTML = "You should read <strong>To Kill a Mockingbird</strong>!";
     }
 
     else if (answer1 == "realistic" && answer2 == "cozy" && answer3 == "standalone") {
-      result.innerHTML = "📖 You should read <strong>Borrow My Heart</strong>!";
+      result.innerHTML = "You should read <strong>Borrow My Heart</strong>!";
     }
 
   }
