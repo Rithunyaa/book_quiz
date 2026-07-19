@@ -1,149 +1,137 @@
-// Scores for each possible outcome
-var fantasyScore = 0;
-var realisticScore = 0;
-var nonfictionScore = 0;
+// Stores which answer the user selected for each question
+var answer1 = "";
+var answer2 = "";
+var answer3 = "";
 
-// Tracks how many questions have been answered
 var questionCount = 0;
 
-
-// Question 1 buttons
+// Question 1
 var q1a1 = document.getElementById("q1a1");
 var q1a2 = document.getElementById("q1a2");
-var q1a3 = document.getElementById("q1a3");
 
-// Question 2 buttons
+// Question 2
 var q2a1 = document.getElementById("q2a1");
 var q2a2 = document.getElementById("q2a2");
 
-// Question 3 buttons
+// Question 3
 var q3a1 = document.getElementById("q3a1");
 var q3a2 = document.getElementById("q3a2");
-var q3a3 = document.getElementById("q3a3");
 
-// Result text
+// Result
 var result = document.getElementById("result");
 
 
-// Question 1 event listeners
-q1a1.addEventListener("click", function() {
-  fantasy();
+// --------------------
+// EVENT LISTENERS
+// --------------------
+
+q1a1.addEventListener("click", function () {
+  answer1 = "fantasy";
+  questionCount++;
   disableQuestion1();
+  checkQuiz();
 });
 
-q1a2.addEventListener("click", function() {
-  realistic();
+q1a2.addEventListener("click", function () {
+  answer1 = "realistic";
+  questionCount++;
   disableQuestion1();
-});
-
-q1a3.addEventListener("click", function() {
-  nonfiction();
-  disableQuestion1();
+  checkQuiz();
 });
 
 
-// Question 2 event listeners
-q2a1.addEventListener("click", function() {
-  nonfiction();
+q2a1.addEventListener("click", function () {
+  answer2 = "thought";
+  questionCount++;
   disableQuestion2();
+  checkQuiz();
 });
 
-q2a2.addEventListener("click", function() {
-  fantasy();
+q2a2.addEventListener("click", function () {
+  answer2 = "cozy";
+  questionCount++;
   disableQuestion2();
-});
-
-
-// Question 3 event listeners
-q3a1.addEventListener("click", function() {
-  realistic();
-  disableQuestion3();
-});
-
-q3a2.addEventListener("click", function() {
-  fantasy(); // Change later if needed
-  disableQuestion3();
-});
-
-q3a3.addEventListener("click", function() {
-  fantasy();
-  disableQuestion3();
-});
-
-
-
-// Score functions
-
-function fantasy() {
-  fantasyScore += 1;
-  questionCount += 1;
   checkQuiz();
-}
+});
 
 
-function realistic() {
-  realisticScore += 1;
-  questionCount += 1;
+q3a1.addEventListener("click", function () {
+  answer3 = "standalone";
+  questionCount++;
+  disableQuestion3();
   checkQuiz();
-}
+});
 
-
-function nonfiction() {
-  nonfictionScore += 1;
-  questionCount += 1;
+q3a2.addEventListener("click", function () {
+  answer3 = "series";
+  questionCount++;
+  disableQuestion3();
   checkQuiz();
-}
+});
 
 
-
-// Disable buttons after answering
+// --------------------
+// DISABLE BUTTONS
+// --------------------
 
 function disableQuestion1() {
   q1a1.disabled = true;
   q1a2.disabled = true;
-  q1a3.disabled = true;
 }
-
 
 function disableQuestion2() {
   q2a1.disabled = true;
   q2a2.disabled = true;
 }
 
-
 function disableQuestion3() {
   q3a1.disabled = true;
   q3a2.disabled = true;
-  q3a3.disabled = true;
 }
 
 
-
-// Determine final result
+// --------------------
+// DETERMINE RESULT
+// --------------------
 
 function checkQuiz() {
 
   if (questionCount == 3) {
 
-    if (fantasyScore >= realisticScore && fantasyScore >= nonfictionScore) {
+    // Fantasy OR Dystopian
 
-      result.innerHTML = 
-      "You should read <strong>Placeholder Fantasy Book</strong>!";
-
+    if (answer1 == "fantasy" && answer2 == "thought" && answer3 == "series") {
+      result.innerHTML = "📖 You should read <strong>The Prison Healer</strong>!";
     }
 
-    else if (realisticScore >= fantasyScore && realisticScore >= nonfictionScore) {
-
-      result.innerHTML = 
-      "You should read <strong>Placeholder Realistic Fiction Book</strong>!";
-
+    else if (answer1 == "fantasy" && answer2 == "thought" && answer3 == "standalone") {
+      result.innerHTML = "📖 You should read <strong>The Song of Achilles</strong>!";
     }
 
-    else {
+    else if (answer1 == "fantasy" && answer2 == "cozy" && answer3 == "standalone") {
+      result.innerHTML = "📖 You should read <strong>The Very Secret Society of Irregular Witches</strong>!";
+    }
 
-      result.innerHTML = 
-      "You should read <strong>Placeholder Nonfiction Book</strong>!";
+    else if (answer1 == "fantasy" && answer2 == "cozy" && answer3 == "series") {
+      result.innerHTML = "📖 You should read <strong>Percy Jackson</strong>!";
+    }
 
+    // Realistic Fiction
+
+    else if (answer1 == "realistic" && answer2 == "cozy" && answer3 == "series") {
+      result.innerHTML = "📖 You should read <strong>Better Than the Movies</strong>!";
+    }
+
+    else if (answer1 == "realistic" && answer2 == "thought" && answer3 == "series") {
+      result.innerHTML = "📖 You should read <strong>The Inheritance Games</strong>!";
+    }
+
+    else if (answer1 == "realistic" && answer2 == "thought" && answer3 == "standalone") {
+      result.innerHTML = "📖 You should read <strong>To Kill a Mockingbird</strong>!";
+    }
+
+    else if (answer1 == "realistic" && answer2 == "cozy" && answer3 == "standalone") {
+      result.innerHTML = "📖 You should read <strong>Borrow My Heart</strong>!";
     }
 
   }
